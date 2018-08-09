@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="train.1.0.0.css" type="text/css">
+	</head>
+	<body>
+		<div id="train-bar-01"></div>
+		<br /><br /><br />
+		<div id="train-phase-01" style="border: 2px dashed red"  data-train-group="ucXPTO">
+			123<br />
+			456<br />
+			789
+		</div>
+
+		<div id="train-phase-02" style="border: 2px dashed green" data-train-group="ucXPTO">
+			ABC<br />
+			DEF<br />
+			GHI
+		</div>
+		<div id="train-phase-03" style="border: 2px dashed blue"  data-train-group="ucXPTO">
+			STONE<br />
+			PAPER<br />
+			SCISSORS
+		</div>
+
+		<h4> Messages </h4>
+		<ul id="messages">
+
+		</ul>
+
+		<h3> External functions </h3>
+		<hr />
+		<button onclick="forward()"   id="btnT1">Next</button>
+		<button onclick="backward()"  id="btnT2">Back</button>
+		<button onclick="isFirst()"   id="btnT3">isFirst</button>
+		<button onclick="isLast()"    id="btnT4">isLast</button>
+		<button onclick="whichStep()" id="btnT5">Which Step</button>
+		<button onclick="lock()"      id="btnT6">Lock</button>
+		<button onclick="unlock()"    id="btnT7">Unlock</button>
+
+		<script src="./jquery.v3.3.1.js"></script>
+		<script src="./train.1.0.0.js"></script>
+
+		<script type="text/javascript">
+			var msg   = $('#messages');
+          	var train = $( '#train-bar-01' ).trainBar({
+                'beforeChange' : function() {
+					$(msg).empty();
+					$(msg).append($('<li/>', {text:'Execute always before change step'}));
+					return true; 
+				},
+				'afterChange'  : function() { 
+					$(msg).append($('<li/>', {text:'Execute always after change step'})); 
+				},
+                'group'        : 'ucXPTO',
+                'phases' : [
+                    { 	'shortTitle': 'First part', 
+                        'fullTitle' : 'This is step 01',
+                        'legend'    : 'Customized legend for fase 01',
+                        'loadWith'  : {
+                            'selector' : '#train-phase-01',
+                        }
+					},
+					{ 	'shortTitle': 'Second part', 
+                        'fullTitle' : 'This is step 02',
+						'before'    : function() { 
+							$(msg).append($('<li/>', {text:'Execute always before step 02'}));
+							return true;
+						},
+                        'loadWith'  : {
+                            'selector' : '#train-phase-02',
+                        }
+					},
+					{ 	'shortTitle': 'Third part', 
+                        'fullTitle' : 'This is step 03',
+						'after'     : function() { 
+							$(msg).append($('<li/>', {text:'Execute always after step 03'}));
+						},
+                        'loadWith'  : {
+                            'selector' : '#train-phase-03',
+                        }
+                    }                    
+                ]
+            });
+
+			function forward()     { train.forward();  }
+			function backward()    { train.backward(); }
+			function isFirst()     { alert(train.isFirst()); }
+			function isLast()      { alert(train.isLast());  }
+			function whichStep()   { alert(train.getStepIndex() + 1 );  }
+			function lock()        { train.lock();  }
+			function unlock()      { train.unlock();  }
+		</script>
+	</body>
+</html>

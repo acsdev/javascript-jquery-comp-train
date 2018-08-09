@@ -1,0 +1,72 @@
+.trainBar {
+    display: inline-block
+}
+
+.trainBar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #B8B8B8;
+}
+
+.trainBar ul li {
+    float: left;
+}
+
+.trainBar ul li a {
+    display: block;
+    color: white;
+    padding: 12px;
+    text-decoration: none;
+	border-right: 1px solid #C6C6C6;
+}
+
+.trainBar ul li a span.circle {
+    width: 10px;
+    height: 10px;
+    padding: 2px 7px;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: sans-serif;
+    background-color: rgba(255,255,255, .2); 
+    border-radius: 50%;
+    display: initial;
+}
+
+.trainBar ul li a.selected span.circle {
+    background-color: rgba(120, 173, 227, .4) !important; 
+}
+
+.trainBar ul li a span.content {
+    display: inline-block;
+    margin-left: 5px;
+    margin-right: 5px;
+	font-size: 15px;
+	font-weight: bold;
+	font-family: sans-serif
+}
+
+.trainBar ul li a span.arrow:before {
+    content: "\00bb";
+	font-size: 16px;
+}
+
+.trainBar ul li a:hover {
+    background-color: #274E81;
+	border-right: 1px solid #FFFFFF;
+}
+
+.trainBar ul li a.selected {
+    background-color: #3B75C3;
+	border-right: 1px solid #FFFFFF;
+}
+
+#train-bar-area-div-subtitle-train-bar h3{
+	color: #666666;
+    font-family: sans-serif;
+    font-size: 18px;
+    padding: 20px 0 20px 0;
+}
