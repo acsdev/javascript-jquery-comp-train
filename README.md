@@ -42,5 +42,4 @@
 Samples of how to use can be found in **index.html**
 Page index.html should look like this:
 
-![Image of index]
-(https://github.com/acsdev/javascript-jquey-comp-train/blob/master/train.1.0.0.png)
+![alt text](https://github.com/acsdev/javascript-jquey-comp-train/blob/master/train.1.0.0.png)
